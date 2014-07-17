@@ -1,0 +1,16 @@
+vpn_ipsec_ike_group_name: IKE-G
+vpn_ipsec_ike_group_encryption: aes256
+vpn_ipsec_ike_group_hash: sha1
+vpn_ipsec_ike_group_dh_group: 2
+vpn_ipsec_ike_group_lifetime: 28800
+vpn_ipsec_ike_group_dpd_action: restart
+vpn_ipsec_ike_group_dpd_interval: 15
+vpn_ipsec_ike_group_dpd_timeout: 90
+vpn_ipsec_esp_group_name: ESP-G
+vpn_ipsec_esp_group_encryption: aes256
+vpn_ipsec_esp_group_hash: sha1
+vpn_ipsec_esp_group_lifetime: 3600
+vpn_ipsec_site_to_site_peer_pre_shared_secret: test
+vpn_ipsec_ipsec_interface: eth1
+
+interfaces_l2tpv3_l2tpeth0_encapsulation: udp

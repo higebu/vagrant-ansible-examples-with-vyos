@@ -1,0 +1,4 @@
+- name: upload script for dhcp server
+  template: src=dhcp.sh.j2 dest=/tmp/script.sh mode=0755
+- name: run script for dhcp server
+  command: /tmp/script.sh

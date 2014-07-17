@@ -1,0 +1,7 @@
+- hosts: vpn
+  roles:
+    - vpn
+
+- hosts: dhcp
+  roles:
+    - dhcp

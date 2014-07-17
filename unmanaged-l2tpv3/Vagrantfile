@@ -1,0 +1,38 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.define :vyos1 do |vyos1|
+    vyos1.vm.box = "higebu/vyos-helium-1407182227-7e8544a-amd64"
+    vyos1.vm.network "private_network", ip: "192.168.56.11"
+    vyos1.vm.network "private_network", virtualbox__intnet: "network1", auto_config: false
+  end
+
+  config.vm.define :vyos2 do |vyos2|
+    vyos2.vm.box = "higebu/vyos-helium-1407182227-7e8544a-amd64"
+    vyos2.vm.network "private_network", ip: "192.168.56.12"
+    vyos2.vm.network "private_network", virtualbox__intnet: "network2", auto_config: false
+  end
+
+  config.vm.define :vyos3 do |vyos3|
+    vyos3.vm.box = "higebu/vyos-helium-1407182227-7e8544a-amd64"
+    vyos3.vm.network "private_network", ip: "192.168.100.11", virtualbox__intnet: "network2"
+  end
+
+  config.vm.define :ubuntu1 do |ubuntu1|
+    ubuntu1.vm.box = "hashicorp/precise64"
+    ubuntu1.vm.network "private_network", type: "dhcp", virtualbox__intnet: "network1"
+  end
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "playbook/site.yml"
+    ansible.groups = {
+      "vpn" => ["vyos1", "vyos2"],
+      "dhcp" => ["vyos3"]
+    }
+    ansible.verbose = "v"
+  end
+end

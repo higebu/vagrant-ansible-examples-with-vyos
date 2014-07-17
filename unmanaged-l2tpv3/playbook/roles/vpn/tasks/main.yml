@@ -1,0 +1,8 @@
+- name: upload the script for ipsec vpn
+  template: src=ipsec.sh.j2 dest=/tmp/script.sh mode=0755
+- name: run the script for ipsec vpn
+  command: /tmp/script.sh
+- name: upload the script for l2tpv3
+  template: src=l2tpv3.sh.j2 dest=/tmp/script.sh mode=0755
+- name: run the script for l2tpv3
+  command: /tmp/script.sh

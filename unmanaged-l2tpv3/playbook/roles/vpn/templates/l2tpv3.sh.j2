@@ -1,0 +1,20 @@
+#!/bin/vbash
+
+source /opt/vyatta/etc/functions/script-template
+
+set interfaces l2tpv3 l2tpeth0
+set interfaces l2tpv3 l2tpeth0 encapsulation {{ interfaces_l2tpv3_l2tpeth0_encapsulation }}
+set interfaces l2tpv3 l2tpeth0 source-port {{ interfaces_l2tpv3_l2tpeth0_source_port }}
+set interfaces l2tpv3 l2tpeth0 destination-port {{ interfaces_l2tpv3_l2tpeth0_destination_port }}
+set interfaces l2tpv3 l2tpeth0 local-ip {{ interfaces_l2tpv3_l2tpeth0_local_ip }}
+set interfaces l2tpv3 l2tpeth0 remote-ip {{ interfaces_l2tpv3_l2tpeth0_remote_ip }}
+set interfaces l2tpv3 l2tpeth0 tunnel-id {{ interfaces_l2tpv3_l2tpeth0_tunnel_id }}
+set interfaces l2tpv3 l2tpeth0 peer-tunnel-id peer {{ interfaces_l2tpv3_l2tpeth0_peer_tunnel_id }
+set interfaces l2tpv3 l2tpeth0 session-id {{ interfaces_l2tpv3_l2tpeth0_session_id }}
+set interfaces l2tpv3 l2tpeth0 peer-session-id {{ interfaces_l2tpv3_l2tpeth0_peer_session_id }}
+set interfaces bridge br0
+set interfaces ethernet eth1 bridge-group bridge br0
+set interfaces l2tpv3 l2tpeth0 bridge-group brigde br0
+
+commit
+save
