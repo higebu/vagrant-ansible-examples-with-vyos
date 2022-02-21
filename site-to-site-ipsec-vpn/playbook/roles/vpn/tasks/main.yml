@@ -1,4 +1,3 @@
-- name: upload the script for ipsec vpn
-  template: src=ipsec.sh.j2 dest=/tmp/script.sh mode=0755
-- name: run the script for ipsec vpn
-  command: /tmp/script.sh
+- name: Configure vpn
+  vyos.vyos.vyos_config:
+    src: ipsec.j2

@@ -1,0 +1,4 @@
+set service dhcp-server shared-network-name {{ service_dhcp_server_shared_network_name }} subnet {{ service_dhcp_server_subnet }} default-router {{ service_dhcp_server_default_router }}
+set service dhcp-server shared-network-name {{ service_dhcp_server_shared_network_name }} subnet {{ service_dhcp_server_subnet }} range 0 start {{ service_dhcp_server_start }}
+set service dhcp-server shared-network-name {{ service_dhcp_server_shared_network_name }} subnet {{ service_dhcp_server_subnet }} range 0 stop {{ service_dhcp_server_stop }}
+set service dhcp-server shared-network-name {{ service_dhcp_server_shared_network_name }} subnet {{ service_dhcp_server_subnet }} static-route {{ service_dhcp_server_static_route_destination_subnet }} next-hop {{ service_dhcp_server_static_route_router }}

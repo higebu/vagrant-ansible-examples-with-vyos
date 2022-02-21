@@ -6,31 +6,32 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define :vyos1 do |vyos1|
-    vyos1.vm.box = "higebu/vyos-1.0.4-amd64"
+    vyos1.vm.box = "vyos/current"
     vyos1.vm.network "private_network", ip: "192.168.56.11"
-    vyos1.vm.network "private_network", ip: "192.168.100.11", virtualbox__intnet: "network1"
+    vyos1.vm.network "private_network", ip: "192.168.101.11", virtualbox__intnet: "network1"
   end
 
   config.vm.define :vyos2 do |vyos2|
-    vyos2.vm.box = "higebu/vyos-1.0.4-amd64"
+    vyos2.vm.box = "vyos/current"
     vyos2.vm.network "private_network", ip: "192.168.56.12"
-    vyos2.vm.network "private_network", ip: "192.168.200.11", virtualbox__intnet: "network2"
+    vyos2.vm.network "private_network", ip: "192.168.102.11", virtualbox__intnet: "network2"
   end
 
-  config.vm.define :ubuntu1 do |ubuntu1|
-    ubuntu1.vm.box = "ubuntu/trusty64"
-    ubuntu1.vm.network "private_network", type: "dhcp", virtualbox__intnet: "network1"
+  config.vm.define :debian1 do |debian1|
+    debian1.vm.box = "debian/bullseye64"
+    debian1.vm.network "private_network", type: "dhcp", virtualbox__intnet: "network1"
   end
 
-  config.vm.define :ubuntu2 do |ubuntu2|
-    ubuntu2.vm.box = "ubuntu/trusty64"
-    ubuntu2.vm.network "private_network", type: "dhcp", virtualbox__intnet: "network2"
+  config.vm.define :debian2 do |debian2|
+    debian2.vm.box = "debian/bullseye64"
+    debian2.vm.network "private_network", type: "dhcp", virtualbox__intnet: "network2"
   end
 
   config.vm.provision "ansible" do |ansible|
+    ansible.galaxy_role_file = "../requirements.yml"
     ansible.playbook = "playbook/site.yml"
     ansible.groups = {
-      "vpn" => ["vyos1", "vyos2"]
+      "vyos" => ["vyos1", "vyos2"]
     }
     ansible.verbose = "v"
   end

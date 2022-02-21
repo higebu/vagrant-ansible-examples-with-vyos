@@ -1,7 +1,3 @@
-#!/bin/vbash
-
-source /opt/vyatta/etc/functions/script-template
-
 set vpn ipsec ike-group {{ vpn_ipsec_ike_group_name }} proposal 1 encryption {{ vpn_ipsec_ike_group_encryption }}
 set vpn ipsec ike-group {{ vpn_ipsec_ike_group_name }} proposal 1 hash {{ vpn_ipsec_ike_group_hash }}
 set vpn ipsec ike-group {{ vpn_ipsec_ike_group_name }} proposal 1 dh-group {{ vpn_ipsec_ike_group_dh_group }}
@@ -14,7 +10,7 @@ set vpn ipsec esp-group {{ vpn_ipsec_esp_group_name }} proposal 1 encryption {{ 
 set vpn ipsec esp-group {{ vpn_ipsec_esp_group_name }} proposal 1 hash {{ vpn_ipsec_esp_group_hash }}
 set vpn ipsec esp-group {{ vpn_ipsec_esp_group_name }} lifetime {{ vpn_ipsec_esp_group_lifetime }}
 
-set vpn ipsec ipsec-interfaces interface {{ vpn_ipsec_ipsec_interface }}
+set vpn ipsec interface {{ vpn_ipsec_ipsec_interface }}
 
 set vpn ipsec site-to-site peer {{ vpn_ipsec_site_to_site_peer_address }} authentication mode pre-shared-secret
 set vpn ipsec site-to-site peer {{ vpn_ipsec_site_to_site_peer_address }} authentication pre-shared-secret {{ vpn_ipsec_site_to_site_peer_pre_shared_secret }}
@@ -23,6 +19,3 @@ set vpn ipsec site-to-site peer {{ vpn_ipsec_site_to_site_peer_address }} defaul
 set vpn ipsec site-to-site peer {{ vpn_ipsec_site_to_site_peer_address }} local-address {{ vpn_ipsec_site_to_site_peer_local_address }}
 set vpn ipsec site-to-site peer {{ vpn_ipsec_site_to_site_peer_address }} tunnel 1 local prefix {{ vpn_ipsec_site_to_site_peer_local_prefix }}
 set vpn ipsec site-to-site peer {{ vpn_ipsec_site_to_site_peer_address }} tunnel 1 remote prefix {{ vpn_ipsec_site_to_site_peer_remote_prefix }}
-
-commit
-save

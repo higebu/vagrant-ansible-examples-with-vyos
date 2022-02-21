@@ -1,4 +1,5 @@
-- hosts: vpn
+- hosts: vyos
+  gather_facts: no
   roles:
     - dhcp
     - vpn

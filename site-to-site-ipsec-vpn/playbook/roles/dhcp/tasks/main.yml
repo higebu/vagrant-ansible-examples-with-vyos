@@ -1,4 +1,3 @@
-- name: upload the script for dhcp server
-  template: src=dhcp.sh.j2 dest=/tmp/script.sh mode=0755
-- name: run the script for dhcp server
-  command: /tmp/script.sh
+- name: Configure dhcp server
+  vyos.vyos.vyos_config:
+    src: dhcp.j2

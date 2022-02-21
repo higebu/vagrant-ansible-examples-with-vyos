@@ -1,14 +1,14 @@
 service_dhcp_server_shared_network_name: POOL_1
-service_dhcp_server_subnet: 192.168.200.0/24
-service_dhcp_server_default_router: 192.168.200.11
-service_dhcp_server_start: 192.168.200.20
-service_dhcp_server_stop: 192.168.200.254
-service_dhcp_server_static_route_destination_subnet: 192.168.100.0/24
-service_dhcp_server_static_route_router: 192.168.200.11
+service_dhcp_server_subnet: 192.168.102.0/24
+service_dhcp_server_default_router: 192.168.102.11
+service_dhcp_server_start: 192.168.102.20
+service_dhcp_server_stop: 192.168.102.254
+service_dhcp_server_static_route_destination_subnet: 192.168.101.0/24
+service_dhcp_server_static_route_router: 192.168.102.11
 
 vpn_ipsec_site_to_site_peer_address: 192.168.56.11
 vpn_ipsec_site_to_site_peer_ike_group: IKE-G
 vpn_ipsec_site_to_site_peer_esp_group: ESP-G
 vpn_ipsec_site_to_site_peer_local_address: 192.168.56.12
-vpn_ipsec_site_to_site_peer_local_prefix: 192.168.200.0/24
-vpn_ipsec_site_to_site_peer_remote_prefix: 192.168.100.0/24
+vpn_ipsec_site_to_site_peer_local_prefix: 192.168.102.0/24
+vpn_ipsec_site_to_site_peer_remote_prefix: 192.168.101.0/24
